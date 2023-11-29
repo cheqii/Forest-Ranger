@@ -10,6 +10,8 @@ public class InteractObject : MonoBehaviour
 
     [SerializeField] private bool canInteract;
 
+    private CheckObject checkObject;
+    
     public bool CanInteract
     {
         get => canInteract;
@@ -26,6 +28,7 @@ public class InteractObject : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>().GetComponent<Player>();
+        checkObject = GetComponent<CheckObject>();
     }
 
     // Update is called once per frame
@@ -44,6 +47,14 @@ public class InteractObject : MonoBehaviour
             isInArea = true;
             if (isInArea) outlineMat.SetInt("_isOn", 1);
             // Debug.Log($"Player can interact the {this.gameObject.name} !");
+            
+            // if (Input.GetKeyDown(KeyCode.Space) && canInteract)
+            // {
+            //     Debug.Log("Space");
+            //     checkObject.CheckIsDoor();
+            //     // Debug.Log("Rescue");
+            //     // agent.SetDestination(player.transform.position);
+            // }
         }
         else
         {
