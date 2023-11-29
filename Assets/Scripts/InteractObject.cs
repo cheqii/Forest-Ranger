@@ -2,13 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Vector3 = System.Numerics.Vector3;
 
 public class InteractObject : MonoBehaviour
 {
     private Player player;
-    float targetDistance;
+    private float targetDistance;
 
     [SerializeField] private bool canInteract;
     [SerializeField] private bool isInArea;
@@ -39,8 +37,9 @@ public class InteractObject : MonoBehaviour
         {
             isInArea = true;
             if (isInArea) outlineMat.SetInt("_isOn", 1);
-                // Debug.Log($"Player can interact the {this.gameObject.name} !");
-            if (Input.GetKeyDown(KeyCode.Space))
+            // Debug.Log($"Player can interact the {this.gameObject.name} !");
+            
+            if (Input.GetKeyDown(KeyCode.Space) && canInteract)
             {
                 Debug.Log($"Player have interact with {gameObject.name} already");
             }
