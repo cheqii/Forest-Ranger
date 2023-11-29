@@ -9,6 +9,13 @@ public class InteractObject : MonoBehaviour
     private float targetDistance;
 
     [SerializeField] private bool canInteract;
+
+    public bool CanInteract
+    {
+        get => canInteract;
+        set => canInteract = value;
+    }
+    
     [SerializeField] private bool isInArea;
 
     [Header("Distance To Get Interact With")] 
@@ -19,7 +26,6 @@ public class InteractObject : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>().GetComponent<Player>();
-        // outlineMat = GetComponent<Material>();
     }
 
     // Update is called once per frame
@@ -38,11 +44,6 @@ public class InteractObject : MonoBehaviour
             isInArea = true;
             if (isInArea) outlineMat.SetInt("_isOn", 1);
             // Debug.Log($"Player can interact the {this.gameObject.name} !");
-            
-            if (Input.GetKeyDown(KeyCode.Space) && canInteract)
-            {
-                Debug.Log($"Player have interact with {gameObject.name} already");
-            }
         }
         else
         {
