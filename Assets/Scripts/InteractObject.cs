@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class InteractObject : MonoBehaviour
@@ -10,8 +11,6 @@ public class InteractObject : MonoBehaviour
 
     [SerializeField] private bool canInteract;
 
-    private CheckObject checkObject;
-    
     public bool CanInteract
     {
         get => canInteract;
@@ -28,19 +27,17 @@ public class InteractObject : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>().GetComponent<Player>();
-        checkObject = GetComponent<CheckObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // FindTargetDistance();
         InteractionWithPlayer();
     }
 
     void InteractionWithPlayer()
     {
-        // if (player != null) return;
+        if (player == null) return;
         FindTargetDistance();
         if (targetDistance <= interactRange)
         {
@@ -48,13 +45,11 @@ public class InteractObject : MonoBehaviour
             if (isInArea) outlineMat.SetInt("_isOn", 1);
             // Debug.Log($"Player can interact the {this.gameObject.name} !");
             
-            // if (Input.GetKeyDown(KeyCode.Space) && canInteract)
-            // {
-            //     Debug.Log("Space");
-            //     checkObject.CheckIsDoor();
-            //     // Debug.Log("Rescue");
-            //     // agent.SetDestination(player.transform.position);
-            // }
+            if (Input.GetKeyDown(KeyCode.Space) && canInteract)
+            {
+                Debug.Log($"Player have interaction with {gameObject.name}");
+                GetComponent<IInteractableObject>().Interactable();
+            }
         }
         else
         {

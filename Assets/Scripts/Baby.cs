@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Baby : MonoBehaviour
+public class Baby : MonoBehaviour, IInteractableObject
 {
     private Player player;
     
@@ -28,15 +26,12 @@ public class Baby : MonoBehaviour
 
     void PlayerRescue()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _interactObject.CanInteract)
-        {
-            isRescue = true;
-        }
+        if (isRescue) agent.SetDestination(player.transform.position);
+    }
 
-        if (isRescue)
-        {
-            Debug.Log("Rescue");
-            agent.SetDestination(player.transform.position);
-        }
+    public void Interactable()
+    {
+        Debug.Log("Rescue");
+        isRescue = true;
     }
 }
