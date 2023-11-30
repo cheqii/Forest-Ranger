@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class InteractObject : MonoBehaviour
@@ -31,19 +32,24 @@ public class InteractObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // FindTargetDistance();
         InteractionWithPlayer();
     }
 
     void InteractionWithPlayer()
     {
-        // if (player != null) return;
+        if (player == null) return;
         FindTargetDistance();
         if (targetDistance <= interactRange)
         {
             isInArea = true;
             if (isInArea) outlineMat.SetInt("_isOn", 1);
             // Debug.Log($"Player can interact the {this.gameObject.name} !");
+            
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && canInteract)
+            {
+                Debug.Log($"Player have interaction with {gameObject.name}");
+                GetComponent<IInteractableObject>().Interactable();
+            }
         }
         else
         {
@@ -62,11 +68,11 @@ public class InteractObject : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name == "LeftHand") canInteract = true;
+        if (other.gameObject.name == "InteractArea") canInteract = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "LeftHand") canInteract = false;
+        if (other.gameObject.name == "InteractArea") canInteract = false;
     }
 }
