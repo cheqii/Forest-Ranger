@@ -38,6 +38,11 @@ public class GhostSpawn : MonoBehaviour
             }
         }
     }
+
+    public void DestroySpawner()
+    {
+        Destroy(this.gameObject);
+    }
     
     IEnumerator ActivateDeactivateRoutine()
     {

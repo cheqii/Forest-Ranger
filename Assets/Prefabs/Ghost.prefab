@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 2966855434557485088}
   - component: {fileID: 4405174155283925774}
   - component: {fileID: 3535925130951162462}
+  - component: {fileID: 6833209507814973861}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Ghost
@@ -384,7 +385,7 @@ MonoBehaviour:
   ai: {fileID: 3535925130951162462}
   player: {fileID: 0}
   speed: 8.5
-  jumpScareRange: 0
+  jumpScareRange: 10
   isRunAway: 0
   RunawayDistance: 100
   runawaySpeed: 270
@@ -395,6 +396,7 @@ MonoBehaviour:
   - {fileID: 2382288090328730874}
   blinkingRate: 0.59
   FleeSfx: {fileID: 1865168064768483657}
+  JumpScareEvent: {fileID: 11400000, guid: 4e9edef9a7e4a7a4ab506c96e84b5f29, type: 2}
 --- !u!195 &3535925130951162462
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -417,6 +419,34 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6833209507814973861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829536688424764138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1bcc5b818e76b4f8f94841af119496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 4e9edef9a7e4a7a4ab506c96e84b5f29, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4405174155283925774}
+        m_TargetAssemblyTypeName: Ghost, Assembly-CSharp
+        m_MethodName: DestroyGhost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &8088018710920134698
 PrefabInstance:
   m_ObjectHideFlags: 0

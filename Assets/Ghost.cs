@@ -25,6 +25,8 @@ public class Ghost : MonoBehaviour
     [SerializeField] private float blinkingRate;
 
     [SerializeField] private AudioSource FleeSfx;
+
+    [SerializeField] private Nf_GameEvent JumpScareEvent;
     
 
     
@@ -62,8 +64,15 @@ public class Ghost : MonoBehaviour
         if (distance < jumpScareRange)
         {
             Debug.Log("jump scare");
+            JumpScareEvent.Raise();
             Destroy(this.gameObject);
         }
+    }
+
+    public void DestroyGhost()
+    {
+        Destroy(this.gameObject);
+
     }
 
     public void RunAway()
