@@ -23,6 +23,8 @@ public class Ghost : MonoBehaviour
     
     [Range(0.1f,3)]
     [SerializeField] private float blinkingRate;
+
+    [SerializeField] private AudioSource FleeSfx;
     
 
     
@@ -45,10 +47,6 @@ public class Ghost : MonoBehaviour
         
         JumpScare();
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            RunAway();
-        }
     }
 
     private void WalkToPlayer()
@@ -84,6 +82,8 @@ public class Ghost : MonoBehaviour
             // Set the destination for the NavMeshAgent to flee.
             ai.SetDestination(fleePosition);
         }
+        
+        FleeSfx.Play(0);
 
 
         Destroy(this.gameObject,3f);

@@ -7,19 +7,16 @@ public class GhostSpawn : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private Ghost ghost;
 
+    
+    [SerializeField] private float SpawnRate = 30f;
+
     // Start is called before the first frame update
     void Start()
     {
-        Spawn();
+        StartCoroutine(ActivateDeactivateRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
-    
-    
     public void Spawn()
     {
         Ray ray = new Ray(spawnPoints[Random.Range(0, spawnPoints.Length)].position, Vector3.down);
@@ -40,6 +37,17 @@ public class GhostSpawn : MonoBehaviour
                
             }
         }
+    }
+    
+    IEnumerator ActivateDeactivateRoutine()
+    {
+
+        Spawn();
+        
+        
+        yield return new WaitForSeconds(SpawnRate);
+        // Restart the Coroutine to create a loop
+        StartCoroutine(ActivateDeactivateRoutine());
     }
 
 }

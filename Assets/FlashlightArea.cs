@@ -12,4 +12,12 @@ public class FlashlightArea : MonoBehaviour
             other.GetComponent<Ghost>().RunAway();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ghost"))
+        {
+            GetComponent<AudioSource>().Play(0);
+        }
+    }
 }
