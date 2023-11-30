@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,5 +30,17 @@ public class GameManager : MonoBehaviour
             GameObject baby = Instantiate(realBaby, babyInstancePoint.position, quaternion.identity);
             baby.transform.Rotate(0f, -180f, 0f);
         }
+    }
+
+
+    public void EndGame()
+    {
+        Invoke("ReloadScene",5);
+    }
+
+    public void ReloadScene()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }

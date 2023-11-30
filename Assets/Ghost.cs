@@ -33,7 +33,7 @@ public class Ghost : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<FPSMovement>().gameObject;
+        player = FindObjectOfType<Player>().gameObject;
         ai.speed = speed;
         StartCoroutine(ActivateDeactivateRoutine());
 
