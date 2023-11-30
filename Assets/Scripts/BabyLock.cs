@@ -12,13 +12,6 @@ public class BabyLock : MonoBehaviour
 
     void CheckLock()
     {
-        
-        // if (_locks[0].gameObject == null && _locks[1].gameObject == null
-        //     && _locks[2].gameObject == null && _locks[3].gameObject == null)
-        // {
-        //     Destroy(gameObject);
-        // }
-        
         if(_locks[0].gameObject == null && _locks[1].gameObject == null)
         {
             Destroy(gameObject);

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using DefaultNamespace;
-using Oculus.Interaction;
 using UnityEngine;
 
 public class Fences : MonoBehaviour, IInteractableObject

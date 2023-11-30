@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Quaternion = System.Numerics.Quaternion;
 
 public class GameManager : MonoBehaviour
 {
