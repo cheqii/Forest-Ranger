@@ -9,6 +9,12 @@ public class InteractObject : MonoBehaviour
     private Player player;
     private float targetDistance;
 
+    public float TargetDistance
+    {
+        get => targetDistance;
+        set => targetDistance = value;
+    }
+
     [SerializeField] private bool canInteract;
 
     public bool CanInteract
@@ -45,7 +51,7 @@ public class InteractObject : MonoBehaviour
             if (isInArea) outlineMat.SetInt("_isOn", 1);
             // Debug.Log($"Player can interact the {this.gameObject.name} !");
             
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && canInteract)
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && canInteract || Input.GetKeyDown(KeyCode.Space) && canInteract)
             {
                 Debug.Log($"Player have interaction with {gameObject.name}");
                 GetComponent<IInteractableObject>().Interactable();
@@ -63,7 +69,7 @@ public class InteractObject : MonoBehaviour
         targetDistance = Mathf.Sqrt(Mathf.Pow(this.transform.position.x - player.transform.position.x, 2) + 
                                     Mathf.Pow(this.transform.position.z - player.transform.position.z, 2));
         
-        // Debug.Log($"distance from player : {targetDistance}");
+        Debug.Log($"distance from player : {targetDistance}");
     }
 
     private void OnTriggerStay(Collider other)
@@ -73,6 +79,6 @@ public class InteractObject : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "InteractArea") canInteract = false;
+        if (other.gameObject.tag == "InteractArea") canInteract = false;
     }
 }
