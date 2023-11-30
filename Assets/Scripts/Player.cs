@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float speed = 5f; // Speed of the player movement
     public Camera mainCamera; // Reference to the main camera
 
+    public AudioSource WalkSfx;
+
     void Start()
     {
         // Find the main camera in the scene
@@ -36,6 +38,16 @@ public class Player : MonoBehaviour
             cameraRight.Normalize();
 
             Vector3 movement = cameraForward * verticalMovement + cameraRight * horizontalMovement;
+
+            if (movement.magnitude > 0)
+            {
+                WalkSfx.mute = false;
+            }
+            else
+            {
+                WalkSfx.mute = true;
+
+            }
 
             // Move the player
             transform.Translate(movement * speed * Time.deltaTime, Space.World);
