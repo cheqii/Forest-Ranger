@@ -9,6 +9,12 @@ public class InteractObject : MonoBehaviour
     private Player player;
     private float targetDistance;
 
+    public float TargetDistance
+    {
+        get => targetDistance;
+        set => targetDistance = value;
+    }
+
     [SerializeField] private bool canInteract;
 
     public bool CanInteract
@@ -63,7 +69,7 @@ public class InteractObject : MonoBehaviour
         targetDistance = Mathf.Sqrt(Mathf.Pow(this.transform.position.x - player.transform.position.x, 2) + 
                                     Mathf.Pow(this.transform.position.z - player.transform.position.z, 2));
         
-        // Debug.Log($"distance from player : {targetDistance}");
+        Debug.Log($"distance from player : {targetDistance}");
     }
 
     private void OnTriggerStay(Collider other)
