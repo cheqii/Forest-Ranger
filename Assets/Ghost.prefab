@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 3535925130951162462}
   m_Layer: 0
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
   speed: 4.2
   jumpScareRange: 0
   isRunAway: 0
-  runawayRadius: 201
+  RunawayDistance: 100
   runawaySpeed: 270
 --- !u!195 &3535925130951162462
 NavMeshAgent:

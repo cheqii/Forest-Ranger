@@ -16,7 +16,7 @@ public class Ghost : MonoBehaviour
     [SerializeField] private float jumpScareRange;
 
     [SerializeField] private bool isRunAway = false;
-    [Range(1, 500)] public float runawayRadius = 50f;
+    public float RunawayDistance = 10f;
     [Range(0, 300)] public float runawaySpeed = 0.5f;
 
     
@@ -66,19 +66,19 @@ public class Ghost : MonoBehaviour
         isRunAway = true;
         ai.speed = runawaySpeed;
         ai.acceleration = 50;
-        ai.SetDestination(RandomNavMeshLocation());
-        Destroy(this.gameObject,3f);
-    }
-    
-    public Vector3 RandomNavMeshLocation()
-    {
-        Vector3 finalPosition = Vector3.zero;
-        Vector3 randomDirection = Random.insideUnitSphere * runawayRadius;
-        randomDirection += transform.position;
-        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit , runawayRadius, 1))
+        
+        
+        if (Vector3.Distance(transform.position, player.transform.position) < RunawayDistance)
         {
-            finalPosition = hit.position;
+            // Calculate a position opposite to the player.
+            Vector3 fleeDirection = transform.position - player.transform.position;
+            Vector3 fleePosition = transform.position + fleeDirection.normalized * RunawayDistance;
+
+            // Set the destination for the NavMeshAgent to flee.
+            ai.SetDestination(fleePosition);
         }
-        return finalPosition;
+
+
+        Destroy(this.gameObject,3f);
     }
 }
