@@ -19,12 +19,19 @@ public class Ghost : MonoBehaviour
     public float RunawayDistance = 10f;
     [Range(0, 300)] public float runawaySpeed = 0.5f;
 
+    [SerializeField] private SkinnedMeshRenderer[] GhostModel;
+    
+    [Range(0.1f,3)]
+    [SerializeField] private float blinkingRate;
+    
+
     
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<FPSMovement>().gameObject;
         ai.speed = speed;
+        StartCoroutine(ActivateDeactivateRoutine());
 
     }
 
@@ -80,5 +87,32 @@ public class Ghost : MonoBehaviour
 
 
         Destroy(this.gameObject,3f);
+    }
+    
+    
+    IEnumerator ActivateDeactivateRoutine()
+    {
+        // Activate the Renderer
+
+        foreach (var model in GhostModel)
+        {
+            model.enabled = true;
+        }
+        
+        // Wait for 1 second
+        yield return new WaitForSeconds(blinkingRate);
+        
+        
+        foreach (var model in GhostModel)
+        {
+            // Deactivate the Renderer
+            model.enabled = false;
+        }
+
+        // Wait for another 1 second
+        yield return new WaitForSeconds(blinkingRate);
+
+        // Restart the Coroutine to create a loop
+        StartCoroutine(ActivateDeactivateRoutine());
     }
 }
