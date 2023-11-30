@@ -6,11 +6,13 @@ TagManager:
   tags:
   - Ground
   - InteractArea
+  - FlashLight
+  - Ghost
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Hide
   - Water
   - UI
   - 

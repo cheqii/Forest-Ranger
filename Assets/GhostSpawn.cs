@@ -5,21 +5,20 @@ using UnityEngine;
 public class GhostSpawn : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private Ghost ghost;
+    [SerializeField] private GameObject ghost;
+
+    
+    [SerializeField] private float SpawnRate = 30f;
+
+    [SerializeField] private Nf_GameEvent SpawnGhostEvent;
 
     // Start is called before the first frame update
     void Start()
     {
-        Spawn();
+        StartCoroutine(ActivateDeactivateRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
-    
-    
     public void Spawn()
     {
         Ray ray = new Ray(spawnPoints[Random.Range(0, spawnPoints.Length)].position, Vector3.down);
@@ -33,13 +32,30 @@ public class GhostSpawn : MonoBehaviour
             // Check if the object hit is the ground (you can customize the tag or layer as needed)
             if (hit.collider.CompareTag("Ground"))
             {
-                ghost = Instantiate(ghost, hit.point, Quaternion.identity);
+                Instantiate(ghost, hit.point, Quaternion.identity);
+                SpawnGhostEvent.Raise();
             }
             else
             {
                
             }
         }
+    }
+
+    public void DestroySpawner()
+    {
+        Destroy(this.gameObject);
+    }
+    
+    IEnumerator ActivateDeactivateRoutine()
+    {
+
+        Spawn();
+        
+        
+        yield return new WaitForSeconds(SpawnRate);
+        // Restart the Coroutine to create a loop
+        StartCoroutine(ActivateDeactivateRoutine());
     }
 
 }

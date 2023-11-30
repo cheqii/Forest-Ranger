@@ -16,8 +16,18 @@ public class Ghost : MonoBehaviour
     [SerializeField] private float jumpScareRange;
 
     [SerializeField] private bool isRunAway = false;
-    [Range(1, 500)] public float runawayRadius = 50f;
+    public float RunawayDistance = 10f;
     [Range(0, 300)] public float runawaySpeed = 0.5f;
+
+    [SerializeField] private SkinnedMeshRenderer[] GhostModel;
+    
+    [Range(0.1f,3)]
+    [SerializeField] private float blinkingRate;
+
+    [SerializeField] private AudioSource FleeSfx;
+
+    [SerializeField] private Nf_GameEvent JumpScareEvent;
+    
 
     
     // Start is called before the first frame update
@@ -25,6 +35,7 @@ public class Ghost : MonoBehaviour
     {
         player = FindObjectOfType<FPSMovement>().gameObject;
         ai.speed = speed;
+        StartCoroutine(ActivateDeactivateRoutine());
 
     }
 
@@ -38,10 +49,6 @@ public class Ghost : MonoBehaviour
         
         JumpScare();
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            RunAway();
-        }
     }
 
     private void WalkToPlayer()
@@ -57,8 +64,15 @@ public class Ghost : MonoBehaviour
         if (distance < jumpScareRange)
         {
             Debug.Log("jump scare");
+            JumpScareEvent.Raise();
             Destroy(this.gameObject);
         }
+    }
+
+    public void DestroyGhost()
+    {
+        Destroy(this.gameObject);
+
     }
 
     public void RunAway()
@@ -66,19 +80,50 @@ public class Ghost : MonoBehaviour
         isRunAway = true;
         ai.speed = runawaySpeed;
         ai.acceleration = 50;
-        ai.SetDestination(RandomNavMeshLocation());
-        Destroy(this.gameObject,3f);
+        
+        
+        if (Vector3.Distance(transform.position, player.transform.position) < RunawayDistance)
+        {
+            // Calculate a position opposite to the player.
+            Vector3 fleeDirection = transform.position - player.transform.position;
+            Vector3 fleePosition = transform.position + fleeDirection.normalized * RunawayDistance;
+
+            // Set the destination for the NavMeshAgent to flee.
+            ai.SetDestination(fleePosition);
+        }
+        
+        FleeSfx.Play(0);
+
+        blinkingRate = 0.2f;
+
+
+        Destroy(gameObject,3f);
     }
     
-    public Vector3 RandomNavMeshLocation()
+    
+    IEnumerator ActivateDeactivateRoutine()
     {
-        Vector3 finalPosition = Vector3.zero;
-        Vector3 randomDirection = Random.insideUnitSphere * runawayRadius;
-        randomDirection += transform.position;
-        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit , runawayRadius, 1))
+        // Activate the Renderer
+
+        foreach (var model in GhostModel)
         {
-            finalPosition = hit.position;
+            model.enabled = true;
         }
-        return finalPosition;
+        
+        // Wait for 1 second
+        yield return new WaitForSeconds(blinkingRate);
+        
+        
+        foreach (var model in GhostModel)
+        {
+            // Deactivate the Renderer
+            model.enabled = false;
+        }
+
+        // Wait for another 1 second
+        yield return new WaitForSeconds(blinkingRate);
+
+        // Restart the Coroutine to create a loop
+        StartCoroutine(ActivateDeactivateRoutine());
     }
 }
