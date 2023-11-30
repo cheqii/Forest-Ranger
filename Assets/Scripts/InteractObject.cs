@@ -74,11 +74,12 @@ public class InteractObject : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name == "InteractArea") canInteract = true;
+        if (other.CompareTag("InteractArea")) canInteract = true;
+        else Debug.Log("Banaana");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "InteractArea") canInteract = false;
+        if (other.CompareTag("InteractArea")) canInteract = false;
     }
 }
