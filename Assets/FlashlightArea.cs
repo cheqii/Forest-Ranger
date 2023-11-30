@@ -9,7 +9,7 @@ public class FlashlightArea : MonoBehaviour
     {
         if (other.CompareTag("Ghost"))
         {
-            other.GetComponent<Ghost>().RunAway();
+            //other.GetComponent<Ghost>().RunAway();
         }
     }
 
@@ -17,6 +17,8 @@ public class FlashlightArea : MonoBehaviour
     {
         if (other.CompareTag("Ghost"))
         {
+            other.GetComponent<Ghost>().RunAway();
+
             GetComponent<AudioSource>().Play(0);
         }
     }

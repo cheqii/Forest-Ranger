@@ -2157,8 +2157,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2415491400150274939, guid: 55e53cb1560e5ba42836cbf4e09dac0b,
         type: 3}
+      propertyPath: ghost
+      value: 
+      objectReference: {fileID: 8829536688424764138, guid: 4b0e6d697b69e4e4a8c40e6eeb4ed995,
+        type: 3}
+    - target: {fileID: 2415491400150274939, guid: 55e53cb1560e5ba42836cbf4e09dac0b,
+        type: 3}
       propertyPath: SpawnRate
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2519742078684563818, guid: 55e53cb1560e5ba42836cbf4e09dac0b,
         type: 3}

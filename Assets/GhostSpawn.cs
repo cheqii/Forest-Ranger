@@ -5,7 +5,7 @@ using UnityEngine;
 public class GhostSpawn : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private Ghost ghost;
+    [SerializeField] private GameObject ghost;
 
     
     [SerializeField] private float SpawnRate = 30f;
@@ -30,7 +30,7 @@ public class GhostSpawn : MonoBehaviour
             // Check if the object hit is the ground (you can customize the tag or layer as needed)
             if (hit.collider.CompareTag("Ground"))
             {
-                ghost = Instantiate(ghost, hit.point, Quaternion.identity);
+                Instantiate(ghost, hit.point, Quaternion.identity);
             }
             else
             {

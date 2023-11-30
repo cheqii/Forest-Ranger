@@ -85,8 +85,10 @@ public class Ghost : MonoBehaviour
         
         FleeSfx.Play(0);
 
+        blinkingRate = 0.2f;
 
-        Destroy(this.gameObject,3f);
+
+        Destroy(gameObject,3f);
     }
     
     
