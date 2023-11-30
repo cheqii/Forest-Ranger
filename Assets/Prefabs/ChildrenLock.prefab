@@ -698,6 +698,7 @@ MonoBehaviour:
   _locks:
   - {fileID: 1405632253528123717}
   - {fileID: 7492092108974689001}
+  escapeEvent: {fileID: 11400000, guid: 64b2a0907f093434e96b665b627f79f5, type: 2}
 --- !u!1 &3521739787719867378 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100114, guid: 753b38eb36b5add498f220edebff3f9b,
