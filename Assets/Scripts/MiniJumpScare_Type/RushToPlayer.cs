@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RushToPlayer : MonoBehaviour
@@ -6,6 +7,13 @@ public class RushToPlayer : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private float speed = 30f;
     [SerializeField] private float destroyRange = 2f;
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").transform;
+        gameObject.SetActive(false);
+    }
+    
 
     private void Update()
     {

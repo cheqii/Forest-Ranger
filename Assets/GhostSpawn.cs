@@ -10,6 +10,8 @@ public class GhostSpawn : MonoBehaviour
     
     [SerializeField] private float SpawnRate = 30f;
 
+    [SerializeField] private Nf_GameEvent SpawnGhostEvent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class GhostSpawn : MonoBehaviour
             if (hit.collider.CompareTag("Ground"))
             {
                 Instantiate(ghost, hit.point, Quaternion.identity);
+                SpawnGhostEvent.Raise();
             }
             else
             {
