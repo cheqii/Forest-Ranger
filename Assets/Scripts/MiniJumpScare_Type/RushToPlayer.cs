@@ -8,10 +8,9 @@ public class RushToPlayer : MonoBehaviour
     [SerializeField] private float speed = 30f;
     [SerializeField] private float destroyRange = 2f;
 
-    private void Start()
+    private void OnEnable()
     {
         player = GameObject.FindWithTag("Player").transform;
-        gameObject.SetActive(false);
     }
     
 
