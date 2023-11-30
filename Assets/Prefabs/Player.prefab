@@ -223,8 +223,7 @@ GameObject:
   - component: {fileID: 6487251488311263749}
   - component: {fileID: 7337917923750919863}
   - component: {fileID: 1554029257022539497}
-  - component: {fileID: 2962231027662012377}
-  - component: {fileID: 2442969742411098013}
+  - component: {fileID: 1440323235318724793}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -348,33 +347,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!143 &2962231027662012377
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8133482011306819116}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2442969742411098013
+--- !u!114 &1440323235318724793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -383,25 +356,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8133482011306819116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0950df82e7936c84983497630bde5b54, type: 3}
+  m_Script: {fileID: 11500000, guid: 716ba9b4510d18f42bd00dcacf6ef561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 0.1
-  Damping: 0.3
-  BackAndSideDampen: 0.5
-  JumpForce: 0.3
-  RotationAmount: 1.5
-  RotationRatchet: 45
-  SnapRotation: 1
-  RotateAroundGuardianCenter: 0
-  FixedSpeedSteps: 0
-  HmdResetsY: 1
-  HmdRotatesY: 1
-  GravityModifier: 0.379
-  useProfileData: 1
-  EnableLinearMovement: 1
-  EnableRotation: 1
-  RotationEitherThumbstick: 0
+  speed: 5
+  mainCamera: {fileID: 2269810037417449173}
 --- !u!1001 &2269810037419213709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -476,6 +435,12 @@ Transform:
 --- !u!4 &2265330978025249229 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4484591312116288, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2269810037419213709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &2269810037417449173 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a,
     type: 3}
   m_PrefabInstance: {fileID: 2269810037419213709}
   m_PrefabAsset: {fileID: 0}

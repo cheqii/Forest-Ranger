@@ -8,7 +8,7 @@ public class Baby : MonoBehaviour, IInteractableObject
     
     private InteractObject _interactObject;
     private NavMeshAgent agent;
-   
+
 
     [SerializeField] private bool isRescue;
 
