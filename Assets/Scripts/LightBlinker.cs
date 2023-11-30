@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Light))]
 public class LightBlinker : MonoBehaviour
 {
     // Put this script to your "Flashlight" that have "Light" Component
