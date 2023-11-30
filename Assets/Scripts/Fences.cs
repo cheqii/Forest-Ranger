@@ -7,7 +7,6 @@ using UnityEngine;
 public class Fences : MonoBehaviour, IInteractableObject
 {
     private Rigidbody rb;
-    public bool isbroken;
     // Start is called before the first frame update
     void Start()
     {

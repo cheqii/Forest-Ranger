@@ -3,7 +3,7 @@ using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Baby : MonoBehaviour, IInteractableObject
+public class Baby : MonoBehaviour
 {
     private Player player;
     
@@ -30,41 +30,10 @@ public class Baby : MonoBehaviour, IInteractableObject
 
     void PlayerRescue()
     {
-        if (isRescue)
-        {
-            agent.SetDestination(player.transform.position);
-            if (agent.stoppingDistance + 0.1f < _interactObject.TargetDistance)
-            {
-                // agent.speed = 3;
-                // agent.acceleration = 1;
-                animator.SetBool("isWalk", true);
-                // animator.Play("Walk");
-            }
-            else
-            {
-                // agent.speed = 0;
-                // agent.acceleration = 0;
-                animator.SetBool("isWalk", false);
-                // animator.Play("Idle");
-            }
-        }
-    }
-
-    public void Interactable()
-    {
-        Debug.Log("Rescue");
-        isRescue = true;
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        // animator.SetBool("isWalk", false);
-        // animator.Play("Idle");
-    }
-
-    private void OnCollisionExit(Collision other)
-    {
-        // animator.SetBool("isWalk", true);
-        // animator.Play("Walk");
+        agent.SetDestination(player.transform.position);
+        if (agent.stoppingDistance + 0.1f < _interactObject.TargetDistance)
+            animator.SetBool("isWalk", true);
+        else
+            animator.SetBool("isWalk", false);
     }
 }
