@@ -45,7 +45,7 @@ public class InteractObject : MonoBehaviour
             if (isInArea) outlineMat.SetInt("_isOn", 1);
             // Debug.Log($"Player can interact the {this.gameObject.name} !");
             
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && canInteract)
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && canInteract || Input.GetKeyDown(KeyCode.Space) && canInteract)
             {
                 Debug.Log($"Player have interaction with {gameObject.name}");
                 GetComponent<IInteractableObject>().Interactable();
@@ -73,6 +73,6 @@ public class InteractObject : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "InteractArea") canInteract = false;
+        if (other.gameObject.tag == "InteractArea") canInteract = false;
     }
 }
