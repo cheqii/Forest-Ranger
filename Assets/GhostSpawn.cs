@@ -8,12 +8,12 @@ public class GhostSpawn : MonoBehaviour
     [SerializeField] private GameObject ghost;
 
     
-    [SerializeField] private float SpawnRate = 30f;
+     private float SpawnRate = 30f;
 
     [SerializeField] private Nf_GameEvent SpawnGhostEvent;
 
     // Start is called before the first frame update
-    void Start()
+    public  void ActiveGhost()
     {
         StartCoroutine(ActivateDeactivateRoutine());
     }
@@ -45,6 +45,11 @@ public class GhostSpawn : MonoBehaviour
     public void DestroySpawner()
     {
         Destroy(this.gameObject);
+    }
+
+    public void ChangeSpawnRate(float rate)
+    {
+        SpawnRate = rate;
     }
     
     IEnumerator ActivateDeactivateRoutine()

@@ -384,7 +384,7 @@ MonoBehaviour:
   _renderer: {fileID: 453161250682916083}
   ai: {fileID: 3535925130951162462}
   player: {fileID: 0}
-  speed: 8.5
+  speed: 5
   jumpScareRange: 10
   isRunAway: 0
   RunawayDistance: 100
