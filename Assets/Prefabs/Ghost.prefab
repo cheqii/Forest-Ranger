@@ -385,7 +385,7 @@ MonoBehaviour:
   ai: {fileID: 3535925130951162462}
   player: {fileID: 0}
   speed: 5
-  jumpScareRange: 10
+  jumpScareRange: 8
   isRunAway: 0
   RunawayDistance: 100
   runawaySpeed: 270
