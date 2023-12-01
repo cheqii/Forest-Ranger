@@ -8,7 +8,7 @@ public class GhostSpawn : MonoBehaviour
     [SerializeField] private GameObject ghost;
 
     
-     private float SpawnRate = 30f;
+     public float SpawnRate = 30f;
 
     [SerializeField] private Nf_GameEvent SpawnGhostEvent;
 
