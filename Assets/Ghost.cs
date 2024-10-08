@@ -81,7 +81,6 @@ public class Ghost : MonoBehaviour
     {
         // Destroy(this.gameObject);
         alreadyJumpScared = true;
-
     }
 
     public void RunAway()

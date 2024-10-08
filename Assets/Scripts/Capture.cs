@@ -17,18 +17,18 @@ public class Capture : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CameraCapture();
-    }
-
-    private void CameraCapture()
-    {
         if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) && canCapture ||
             canCapture && Input.GetKeyDown(KeyCode.Backspace))
         {
-            cameraCaptureEvent.Raise();
-            currentCapturingRb.isKinematic = false;
-            StartCoroutine(CameraLightDelay());
+            CameraCapture();
         }
+    }
+
+    public void CameraCapture()
+    {
+        cameraCaptureEvent.Raise();
+        currentCapturingRb.isKinematic = false;
+        StartCoroutine(CameraLightDelay());
     }
 
     public void SetCameraLight(float _value)
