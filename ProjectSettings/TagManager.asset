@@ -8,6 +8,9 @@ TagManager:
   - InteractArea
   - FlashLight
   - Ghost
+  - RoomLight
+  - SamplesInfoPanel
+  - StrangeObject
   layers:
   - Default
   - TransparentFX
