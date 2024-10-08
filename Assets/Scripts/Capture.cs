@@ -25,19 +25,16 @@ public class Capture : MonoBehaviour
             canCapture && Input.GetKeyDown(KeyCode.Backspace))
         {
             CameraCapture();
-            if(strangeObj.HaveFound) return;
-
-            currentCapturingCol.isTrigger = false;
-            cameraCaptureEvent.Raise();
-            strangeObj.HaveFound = true;
-            currentCapturingRb.isKinematic = false;
-            StartCoroutine(CameraLightDelay());
         }
     }
 
     public void CameraCapture()
     {
+        if(strangeObj.HaveFound) return;
+
+        currentCapturingCol.isTrigger = false;
         cameraCaptureEvent.Raise();
+        strangeObj.HaveFound = true;
         currentCapturingRb.isKinematic = false;
         StartCoroutine(CameraLightDelay());
     }
