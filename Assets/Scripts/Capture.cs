@@ -22,7 +22,7 @@ public class Capture : MonoBehaviour
 
     private void CameraCapture()
     {
-        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && canCapture ||
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) && canCapture ||
             canCapture && Input.GetKeyDown(KeyCode.Backspace))
         {
             cameraCaptureEvent.Raise();
