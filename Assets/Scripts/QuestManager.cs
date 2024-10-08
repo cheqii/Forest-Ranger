@@ -16,7 +16,7 @@ public class QuestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
         {
             questGroup.SetActive(true);
         }

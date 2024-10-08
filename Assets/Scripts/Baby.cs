@@ -36,4 +36,9 @@ public class Baby : MonoBehaviour
         else
             animator.SetBool("isWalk", false);
     }
+
+    public void DestroyKid()
+    {
+        Destroy(this.gameObject);
+    }
 }
