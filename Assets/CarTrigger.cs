@@ -1,12 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CarTrigger : MonoBehaviour
 {
-    private List<GameObject> WinObjects;
+    public List<GameObject> WinObjects;
 
 
     private void OnTriggerEnter(Collider other)
@@ -16,6 +15,11 @@ public class CarTrigger : MonoBehaviour
             foreach (var v in WinObjects)
             {
                 v.SetActive(true);
+                if (v.TryGetComponent<TextMeshProUGUI>(out var _text))
+                {
+                    _text.color = Color.yellow;
+                    _text.text = "Mission Completed!";
+                }
             }
             Invoke(nameof(RestartGame),5);
         }
