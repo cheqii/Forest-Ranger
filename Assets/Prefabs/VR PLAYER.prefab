@@ -999,6 +999,7 @@ LineRenderer:
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1520,6 +1521,7 @@ MonoBehaviour:
   playerPos: {fileID: 926661298886526952}
   destination: {fileID: 0}
   line: {fileID: 1061738613540813356}
+  carPos: {fileID: 0}
 --- !u!1 &7224423872973961317
 GameObject:
   m_ObjectHideFlags: 0
