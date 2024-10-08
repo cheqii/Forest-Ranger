@@ -27,6 +27,8 @@ public class TutorialText : MonoBehaviour
         {
             Text.color = Color.white;
             Text.text = "Tutorial End";
+            
+            
             return;
             //end
         }

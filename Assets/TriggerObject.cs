@@ -7,7 +7,8 @@ using UnityEngine.Events;
 public class TriggerObject : MonoBehaviour
 {
     public string triggerTagName;
-    // public Nf_GameEvent triggerEvent;
+    
+    public float destroyDelay;
     public UnityEvent OnTrigger = new UnityEvent();
     
     private void OnTriggerEnter(Collider other)
@@ -17,13 +18,21 @@ public class TriggerObject : MonoBehaviour
             if (triggerTagName == "CameraArea")
             {
                 var _camera = other.gameObject.GetComponent<Capture>();
-                _camera.CameraCapture();
-                OnTrigger.Invoke();
-                Destroy(this.gameObject);
+                if (_camera.StrangeObj.HaveFound)
+                {
+                    StartCoroutine(CameraDelay());
+                }
+                Destroy(this.gameObject, 0.5f);
             }
             
             OnTrigger.Invoke();
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, destroyDelay);
         }
+    }
+
+    IEnumerator CameraDelay()
+    {
+        yield return new WaitForSeconds(destroyDelay);
+        OnTrigger.Invoke();
     }
 }

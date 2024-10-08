@@ -16,6 +16,7 @@ public class Capture : MonoBehaviour
     [SerializeField] private AudioSource mysteriousSound;
 
     private StrangeObject strangeObj;
+    public StrangeObject StrangeObj { get => strangeObj; set => strangeObj = value; }
     private Rigidbody currentCapturingRb;
     private Collider currentCapturingCol;
     // Update is called once per frame
