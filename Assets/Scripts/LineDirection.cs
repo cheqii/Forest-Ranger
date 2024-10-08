@@ -19,9 +19,8 @@ public class LineDirection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (GameManager.Instance.foundObjAmount >= 5)
         {
-            print("show line?");
             LeadPlayerToDestination();
         }
         

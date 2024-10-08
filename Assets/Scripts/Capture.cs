@@ -13,7 +13,9 @@ public class Capture : MonoBehaviour
 
     [SerializeField] private float camLightDelay = 0.2f;
 
+    private StrangeObject strangeObj;
     private Rigidbody currentCapturingRb;
+    private Collider currentCapturingCol;
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +23,13 @@ public class Capture : MonoBehaviour
             canCapture && Input.GetKeyDown(KeyCode.Backspace))
         {
             CameraCapture();
+            if(strangeObj.HaveFound) return;
+
+            currentCapturingCol.isTrigger = false;
+            cameraCaptureEvent.Raise();
+            strangeObj.HaveFound = true;
+            currentCapturingRb.isKinematic = false;
+            StartCoroutine(CameraLightDelay());
         }
     }
 
@@ -40,6 +49,14 @@ public class Capture : MonoBehaviour
     {
         yield return new WaitForSeconds(camLightDelay);
         SetCameraLight(0);
+        ResetCamera();
+    }
+
+    private void ResetCamera()
+    {
+        strangeObj = null;
+        currentCapturingRb = null;
+        currentCapturingCol = null;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,7 +64,9 @@ public class Capture : MonoBehaviour
         if (other.CompareTag("StrangeObject"))
         {
             canCapture = true;
+            strangeObj = other.GetComponent<StrangeObject>();
             currentCapturingRb = other.GetComponent<Rigidbody>();
+            currentCapturingCol = other.GetComponent<Collider>();
         }
     }
 
