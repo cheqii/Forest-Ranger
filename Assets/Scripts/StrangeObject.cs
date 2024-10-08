@@ -10,4 +10,6 @@ public class StrangeObject : MonoBehaviour
         get => haveFound;
         set => haveFound = value;
     }
+    
+    
 }

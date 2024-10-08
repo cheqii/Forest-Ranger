@@ -13,6 +13,8 @@ public class Capture : MonoBehaviour
 
     [SerializeField] private float camLightDelay = 0.2f;
 
+    [SerializeField] private AudioSource mysteriousSound;
+
     private StrangeObject strangeObj;
     private Rigidbody currentCapturingRb;
     private Collider currentCapturingCol;
@@ -48,6 +50,7 @@ public class Capture : MonoBehaviour
     IEnumerator CameraLightDelay()
     {
         yield return new WaitForSeconds(camLightDelay);
+        mysteriousSound.Play();
         SetCameraLight(0);
         ResetCamera();
     }
