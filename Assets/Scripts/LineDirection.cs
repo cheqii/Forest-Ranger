@@ -17,6 +17,7 @@ public class LineDirection : MonoBehaviour
         if (GameManager.Instance.foundObjAmount >= 5)
         {
             LeadPlayerToDestination();
+            carPos.GetComponent<CarTrigger>().enabled = true;
         }
         
         line.SetPosition(0, playerPos.transform.position);
