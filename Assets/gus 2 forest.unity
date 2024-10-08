@@ -3172,6 +3172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WinObjects:
   - {fileID: 1006554888}
+  - {fileID: 1006554889}
 --- !u!1 &870957648
 GameObject:
   m_ObjectHideFlags: 0
@@ -3783,6 +3784,12 @@ PrefabInstance:
 --- !u!1 &1006554888 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1653691412462500554, guid: ed7cbeefcc03e67489aa20e3ce9a885b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1006554887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1006554889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8209501902609261233, guid: ed7cbeefcc03e67489aa20e3ce9a885b,
     type: 3}
   m_PrefabInstance: {fileID: 1006554887}
   m_PrefabAsset: {fileID: 0}

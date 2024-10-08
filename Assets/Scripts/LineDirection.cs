@@ -11,13 +11,25 @@ public class LineDirection : MonoBehaviour
 
     [SerializeField] private Transform carPos;
 
+    private AngryLight _angryLight;
+
     // Update is called once per frame
     void Update()
     {
         if (GameManager.Instance.foundObjAmount >= 5)
         {
             LeadPlayerToDestination();
+            carPos.GetComponent<CarTrigger>().enabled = true;
+            _angryLight.enabled = true;
+
         }
+        
+
+        if (_angryLight == null)
+        {
+            _angryLight = FindObjectOfType<AngryLight>();
+        }
+        
         
         line.SetPosition(0, playerPos.transform.position);
     }
