@@ -27,6 +27,9 @@ public class Ghost : MonoBehaviour
     [SerializeField] private AudioSource FleeSfx;
 
     [SerializeField] private Nf_GameEvent JumpScareEvent;
+    [SerializeField] private Nf_GameEvent MissionFailedEvent;
+    
+    [SerializeField] private bool alreadyJumpScared = false;
     
 
     
@@ -65,13 +68,19 @@ public class Ghost : MonoBehaviour
         {
             Debug.Log("jump scare");
             JumpScareEvent.Raise();
-            Destroy(this.gameObject);
+
+            if (alreadyJumpScared)
+            {
+                // MissionFailedEvent.Raise();
+                StartCoroutine(MissionFailedDelay());
+            }
         }
     }
 
     public void DestroyGhost()
     {
-        Destroy(this.gameObject);
+        // Destroy(this.gameObject);
+        alreadyJumpScared = true;
 
     }
 
@@ -125,5 +134,12 @@ public class Ghost : MonoBehaviour
 
         // Restart the Coroutine to create a loop
         StartCoroutine(ActivateDeactivateRoutine());
+    }
+
+    IEnumerator MissionFailedDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        MissionFailedEvent.Raise();
+        Destroy(this.gameObject);
     }
 }

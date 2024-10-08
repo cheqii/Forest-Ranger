@@ -13,3 +13,5 @@ EditorBuildSettings:
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 13d431ff2babd4546b04a77a3894dedf,
       type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: af8f031e6d40eb04b80d3ab006986c58,
+      type: 2}
