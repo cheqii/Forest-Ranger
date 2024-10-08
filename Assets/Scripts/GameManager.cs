@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,11 +11,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform babyInstancePoint;
     [SerializeField] private bool alreadyInstance;
     private BabyLock babyLock;
-    
+
+    public static GameManager Instance;
+
+    public int foundObjAmount;
+    public int maxObj;
+
+    public TextMeshProUGUI amountObjText;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         babyLock = FindObjectOfType<BabyLock>();
+
+        UpdateAmountItemText();
     }
 
     // Update is called once per frame
@@ -43,4 +59,19 @@ public class GameManager : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
+
+    #region count items
+
+    public void FoundItemIncrease()
+    {
+        foundObjAmount++;
+        UpdateAmountItemText();
+    }
+
+    private void UpdateAmountItemText()
+    {
+        amountObjText.text = $"{foundObjAmount} / {maxObj} Object Found.";
+    }
+
+    #endregion
 }
