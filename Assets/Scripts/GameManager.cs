@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int foundObjAmount;
     public int maxObj;
 
-    public TextMeshProUGUI amountObjText;
+    public TextMeshPro amountObjText;
 
     private void Awake()
     {

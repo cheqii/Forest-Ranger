@@ -22,7 +22,6 @@ public class TriggerObject : MonoBehaviour
                 {
                     StartCoroutine(CameraDelay());
                 }
-                Destroy(this.gameObject, 0.5f);
             }
             
             OnTrigger.Invoke();
@@ -34,5 +33,6 @@ public class TriggerObject : MonoBehaviour
     {
         yield return new WaitForSeconds(destroyDelay);
         OnTrigger.Invoke();
+        Destroy(this.gameObject, 0.5f);
     }
 }

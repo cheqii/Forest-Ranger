@@ -398,6 +398,7 @@ MonoBehaviour:
   FleeSfx: {fileID: 1865168064768483657}
   JumpScareEvent: {fileID: 11400000, guid: 4e9edef9a7e4a7a4ab506c96e84b5f29, type: 2}
   MissionFailedEvent: {fileID: 11400000, guid: fac3b0ecb4653b945b6169752da64acc, type: 2}
+  alreadyJumpScared: 0
 --- !u!195 &3535925130951162462
 NavMeshAgent:
   m_ObjectHideFlags: 0

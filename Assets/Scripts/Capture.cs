@@ -22,7 +22,7 @@ public class Capture : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) && canCapture ||
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && canCapture ||
             canCapture && Input.GetKeyDown(KeyCode.Backspace))
         {
             CameraCapture();

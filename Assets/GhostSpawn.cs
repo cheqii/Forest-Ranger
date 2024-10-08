@@ -30,7 +30,7 @@ public class GhostSpawn : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             // Check if the object hit is the ground (you can customize the tag or layer as needed)
-            if (hit.collider.CompareTag("Ground"))
+            if (hit.collider.CompareTag("Ground") && FindObjectOfType<Ghost>() == null)
             {
                 Instantiate(ghost, hit.point, Quaternion.identity);
                 SpawnGhostEvent.Raise();

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class TextWithObject
@@ -27,9 +28,8 @@ public class TutorialText : MonoBehaviour
         {
             Text.color = Color.white;
             Text.text = "Tutorial End";
-            
-            
-            return;
+
+            StartCoroutine(LoadGameScene());
             //end
         }
         else
@@ -53,5 +53,11 @@ public class TutorialText : MonoBehaviour
     private void RefreshQuest()
     {
         allTextWithObjects[currentTextIndex].gameObject.SetActive(true);
+    }
+
+    IEnumerator LoadGameScene()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

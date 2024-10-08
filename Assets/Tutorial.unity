@@ -535,6 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTagName: CameraArea
+  destroyDelay: 2
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
@@ -2001,6 +2002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTagName: Player
+  destroyDelay: 1
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
@@ -4305,6 +4307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTagName: FlashLight
+  destroyDelay: 2
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
